@@ -1,5 +1,6 @@
 import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
+import { Storm } from './storm.entity';
 
 export class Comment {
   @PrimaryGeneratedColumn()
@@ -19,4 +20,7 @@ export class Comment {
 
   @ManyToOne(() => User, (user) => user.comments)
   user: User;
+
+  @ManyToOne(() => Storm, (storm) => storm.user)
+  storm: Storm;
 }

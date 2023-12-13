@@ -1,5 +1,6 @@
+import { Comment } from 'src/entities/comment.entity';
 import { User } from './user.entity';
-import { Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export class Storm {
   @PrimaryGeneratedColumn()
@@ -16,4 +17,7 @@ export class Storm {
 
   @ManyToOne(() => User, (user) => user.storms)
   user: User;
+
+  @OneToMany(() => Comment, (comment) => comment.storm)
+  comments: Comment[];
 }
